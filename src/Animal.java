@@ -1,19 +1,32 @@
+import java.util.ArrayList;
+
 public class Animal {
     private int profit;
     private int fedness;
     private int wetness;
     private int requiredFood;
     private int requiredWater;
-
-    public Animal(int p,int rf, int rw)
+    private int xCord;
+    private int yCord;
+    public Animal(int p,int rf, int rw, int x, int y)
     {
         profit = p;
         fedness = 100;
         wetness = 100;
         requiredFood = rf;
         requiredWater = rw;
+        xCord = x;
+        yCord = y;
     }
 
+    public void updateAnimals(ArrayList<Animal> animals)
+    {
+        for(int n = 0; n < animals.size(); n++)
+        {
+            //move randomly if not going pass border
+        }
+
+    }
     public int feed()//returns amount to subtract from food
     {
         if (fedness<100)

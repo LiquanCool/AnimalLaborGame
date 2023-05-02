@@ -1,7 +1,9 @@
 public class Shop {
     private int multiplier;
-    public Shop(int m)
+    private Data data;
+    public Shop(int m, Data d)
     {
+        data = d;
         multiplier = m;
     }
     public int buyWater()//returns price for water

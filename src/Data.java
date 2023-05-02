@@ -17,5 +17,9 @@ public class Data {
         landAnimalList = new ArrayList<LandAnimal>();
         seaAnimalList = new ArrayList<SeaAnimal>();
     }
+    public void pay(int price)
+    {
+        money-=price;
+    }
 
 }
