@@ -1,6 +1,6 @@
 public class Shop {
     private int multiplier;
-    private Data data;
+    private Data data;//FIX THE SHOP MAKE IT USE DATA
     public Shop(int m, Data d)
     {
         data = d;

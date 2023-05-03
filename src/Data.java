@@ -5,8 +5,41 @@ public class Data {
     private int food;
     private int water;
     private boolean pool;
-    private ArrayList<LandAnimal> landAnimalList;
-    private ArrayList<SeaAnimal> seaAnimalList;
+    private int timesHired;
+    private ArrayList<LandAnimal> ownedLandAnimalList;
+    private ArrayList<SeaAnimal> ownedSeaAnimalList;
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public void setFood(int food) {
+        this.food = food;
+    }
+
+    public void setWater(int water) {
+        this.water = water;
+    }
+
+    public void setPool(boolean pool) {
+        this.pool = pool;
+    }
+
+    public void setTimesHired(int timesHired) {
+        this.timesHired = timesHired;
+    }
+
+    public void setOwnedLandAnimalList(ArrayList<LandAnimal> ownedLandAnimalList) {
+        this.ownedLandAnimalList = ownedLandAnimalList;
+    }
+
+    public void setOwnedSeaAnimalList(ArrayList<SeaAnimal> ownedSeaAnimalList) {
+        this.ownedSeaAnimalList = ownedSeaAnimalList;
+    }
+
+    public int getTimesHired() {
+        return timesHired;
+    }
 
     public Data()
     {
@@ -14,12 +47,36 @@ public class Data {
         food = 100;
         water = 100;
         pool = false;
-        landAnimalList = new ArrayList<LandAnimal>();
-        seaAnimalList = new ArrayList<SeaAnimal>();
+        ownedLandAnimalList = new ArrayList<LandAnimal>();
+        ownedSeaAnimalList = new ArrayList<SeaAnimal>();
+        timesHired = 0;
     }
     public void pay(int price)
     {
         money-=price;
     }
 
+    public int getMoney() {
+        return money;
+    }
+
+    public int getFood() {
+        return food;
+    }
+
+    public int getWater() {
+        return water;
+    }
+
+    public boolean isPool() {
+        return pool;
+    }
+
+    public ArrayList<LandAnimal> getOwnedLandAnimalList() {
+        return ownedLandAnimalList;
+    }
+
+    public ArrayList<SeaAnimal> getOwnedSeaAnimalList() {
+        return ownedSeaAnimalList;
+    }
 }
