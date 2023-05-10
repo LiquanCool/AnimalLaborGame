@@ -27,12 +27,11 @@ public class Hiring {
     }
     public String hire()
     {
-        boolean hired = false;
         if(data.getMoney()>data.getTimesHired()*10)
         {
-            if (data.getOwnedLandAnimalList().size()+data.getOwnedSeaAnimalList().size()<6)//MAKE IT ACCOUNT FOR THE POOL
+            if (data.getTimesHired()<6)
             {
-                while(!hired)
+                while(true)
                 {
                     int num = (int)(Math.random()*20+1);
                     if (num<=7)
@@ -40,7 +39,8 @@ public class Hiring {
                         if (!(data.getOwnedLandAnimalList().contains(landAnimalList.get(0))))
                         {
                             data.getOwnedLandAnimalList().add(landAnimalList.get(0));
-                            hired= true;
+                            data.addTimesHired();
+                            return "There was turtle in your shoe!";
                         }
                     }
                     else if(num==8||num==9)
@@ -48,7 +48,8 @@ public class Hiring {
                         if (!(data.getOwnedLandAnimalList().contains(landAnimalList.get(1))))
                         {
                             data.getOwnedLandAnimalList().add(landAnimalList.get(1));
-                            hired= true;
+                            data.addTimesHired();
+                            return "There was a cow in your walls";
                         }
                     }
                     else if(num==10)
@@ -56,39 +57,40 @@ public class Hiring {
                         if (!(data.getOwnedLandAnimalList().contains(landAnimalList.get(2))))
                         {
                             data.getOwnedLandAnimalList().add(landAnimalList.get(2));
-                            hired= true;
+                            data.addTimesHired();
                             return "One of your trees turned out to be a giraffe!";
                         }
                     }
-                    else if(num<18)
+                    else if(num<18&&data.isPool())
                     {
                         if (!(data.getOwnedSeaAnimalList().contains(seaAnimalList.get(0))))
                         {
                             data.getOwnedSeaAnimalList().add(seaAnimalList.get(0));
-                            hired= true;
+                            data.addTimesHired();
                             return "You found a fish in your glass of water!";
                         }
                     }
-                    else if(num<20)
+                    else if(num<20&&data.isPool())
                     {
                         if (!(data.getOwnedSeaAnimalList().contains(seaAnimalList.get(1))))
                         {
                             data.getOwnedSeaAnimalList().add(seaAnimalList.get(1));
-                            hired= true;
+                            data.addTimesHired();
                             return "A penguin was in your freezer.";
                         }
                     }
-                    else if(num==20)
+                    else if(num==20&&data.isPool())
                     {
                         if (!(data.getOwnedSeaAnimalList().contains(seaAnimalList.get(2))))
                         {
                             data.getOwnedSeaAnimalList().add(seaAnimalList.get(2));
-                            hired= true;
+                            data.addTimesHired();
                             return "A whale appeared in your pool!";
                         }
                     }
                 }
             }
+            return "You have hired too many times already!";
         }
         return "You need "+10*data.getTimesHired()+" dollars to hire again!";
     }

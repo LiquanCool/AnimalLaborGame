@@ -1,21 +1,40 @@
 public class Shop {
     private int multiplier;
-    private Data data;//FIX THE SHOP MAKE IT USE DATA
+    private Data data;
     public Shop(int m, Data d)
     {
         data = d;
         multiplier = m;
     }
-    public int buyWater()//returns price for water
+    public String buyWater()
     {
-        return 10*multiplier;
+        if(data.getMoney()>10)
+        {
+
+            data.addWater(10);
+            data.pay(10);
+            return "Bought 10 water";
+        }
+        return "You cannot buy more water";
     }
-    public int buyFood()//returns price for food
+    public String buyFood()
     {
-        return 10*multiplier;
+        if(data.getMoney()>10)
+        {
+            data.addFood(10);
+            data.pay(10);
+            return "Bought 10 food";
+        }
+        return "You cannot buy more food";
     }
-    public int buyPool()//returns price for pool
+    public String buyPool()
     {
-        return 100*multiplier;
+        if((!data.isPool())&&data.getMoney()>100)
+        {
+            data.setPool(true);
+            data.pay(10);
+            return "Bought pool. Now you can hire sea animals";
+        }
+        return "You cannot buy the pool";
     }
 }

@@ -21,12 +21,18 @@ public class Data {
         this.water = water;
     }
 
+    public void addWater(int water){
+        this.water+=water;
+    }
+    public void addFood(int food){
+        this.food+=food;
+    }
     public void setPool(boolean pool) {
         this.pool = pool;
     }
 
-    public void setTimesHired(int timesHired) {
-        this.timesHired = timesHired;
+    public void addTimesHired() {
+        timesHired++;
     }
 
     public void setOwnedLandAnimalList(ArrayList<LandAnimal> ownedLandAnimalList) {
