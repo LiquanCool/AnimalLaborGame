@@ -73,6 +73,10 @@ public class Data {
     public int getWater() {
         return water;
     }
+    public String getStorage()
+    {
+        return "Food: "+ food + "\nWater: " + water + "\nMoney: " + money + "\n";
+    }
 
     public boolean isPool() {
         return pool;

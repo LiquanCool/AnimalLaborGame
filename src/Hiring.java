@@ -4,11 +4,18 @@ public class Hiring {
     private ArrayList<LandAnimal> landAnimalList;
     private ArrayList<SeaAnimal> seaAnimalList;
     private Data data;
+    private int price;
     public Hiring(Data d)
     {
         landAnimalList = new ArrayList<LandAnimal>();
         seaAnimalList = new ArrayList<SeaAnimal>();
         data = d;
+        updatePrice();
+        initializeAnimals();
+    }
+    public void updatePrice()
+    {
+        price = 20*(int)Math.pow(2,data.getTimesHired());
     }
     public void initializeAnimals()
     {
@@ -27,9 +34,9 @@ public class Hiring {
     }
     public String hire()
     {
-        if(data.getMoney()>data.getTimesHired()*10)
+        if(data.getMoney()>price)
         {
-            if (data.getTimesHired()<6)
+            if (data.getTimesHired()<6&&(data.getTimesHired()<3||data.isPool()))
             {
                 while(true)
                 {
@@ -40,6 +47,8 @@ public class Hiring {
                         {
                             data.getOwnedLandAnimalList().add(landAnimalList.get(0));
                             data.addTimesHired();
+                            data.pay(price);
+                            updatePrice();
                             return "There was turtle in your shoe!";
                         }
                     }
@@ -49,6 +58,8 @@ public class Hiring {
                         {
                             data.getOwnedLandAnimalList().add(landAnimalList.get(1));
                             data.addTimesHired();
+                            data.pay(price);
+                            updatePrice();
                             return "There was a cow in your walls";
                         }
                     }
@@ -58,6 +69,8 @@ public class Hiring {
                         {
                             data.getOwnedLandAnimalList().add(landAnimalList.get(2));
                             data.addTimesHired();
+                            data.pay(price);
+                            updatePrice();
                             return "One of your trees turned out to be a giraffe!";
                         }
                     }
@@ -67,6 +80,8 @@ public class Hiring {
                         {
                             data.getOwnedSeaAnimalList().add(seaAnimalList.get(0));
                             data.addTimesHired();
+                            data.pay(price);
+                            updatePrice();
                             return "You found a fish in your glass of water!";
                         }
                     }
@@ -76,6 +91,8 @@ public class Hiring {
                         {
                             data.getOwnedSeaAnimalList().add(seaAnimalList.get(1));
                             data.addTimesHired();
+                            data.pay(price);
+                            updatePrice();
                             return "A penguin was in your freezer.";
                         }
                     }
@@ -85,14 +102,20 @@ public class Hiring {
                         {
                             data.getOwnedSeaAnimalList().add(seaAnimalList.get(2));
                             data.addTimesHired();
+                            data.pay(price);
+                            updatePrice();
                             return "A whale appeared in your pool!";
                         }
                     }
+
                 }
             }
             return "You have hired too many times already!";
         }
-        return "You need "+10*data.getTimesHired()+" dollars to hire again!";
+        return "You need "+price+" dollars to hire again!";
     }
 
+    public int getPrice() {
+        return price;
+    }
 }
