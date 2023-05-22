@@ -6,6 +6,7 @@ public class Animal {
     private int wetness;
     private int requiredFood;
     private int requiredWater;
+    private boolean sea;
     private int xCord;
     private int yCord;
     public Animal(int p,int rf, int rw, int x, int y)
@@ -17,44 +18,61 @@ public class Animal {
         requiredWater = rw;
         xCord = x;
         yCord = y;
+        sea = false;
     }
-
-    public void updateAnimals(ArrayList<Animal> animals)
+    public Animal(int p,int rf, int x, int y)
     {
-        for(int n = 0; n < animals.size(); n++)
-        {
-            //move randomly if not going pass border
-        }
-
+        profit = p;
+        fedness = 100;
+        wetness = 100;
+        requiredFood = rf;
+        requiredWater = 0;
+        xCord = x;
+        yCord = y;
+        sea = true;
     }
+
     public int feed()//returns amount to subtract from food
     {
         if (fedness<100)
         {
-            if(fedness+requiredFood>100)
+            if(fedness+10>100)
             {
                 fedness=100;
-                return requiredFood;
+                return 10;
             }
-            fedness=fedness+requiredFood;
-            return requiredFood;
+            fedness=fedness+10;
+            return 10;
         }
         else
         {
             return 0;
         }
     }
+
+    public void setProfit(int profit) {
+        this.profit = profit;
+    }
+
+    public void subtractFedness(int fedness) {
+        this.fedness -= fedness;
+    }
+
+    public void subtractWetness(int wetness) {
+        this.wetness -= wetness;
+    }
+
     public int water() //returns amount to subtract from water
     {
         if (wetness<100)
         {
-            if(wetness+requiredWater>100)
+            if(wetness+10>100)
             {
                 wetness=100;
-                return requiredWater;
+                return 10;
             }
-            wetness=wetness+requiredFood;
-            return requiredWater;
+            wetness=wetness+10;
+            return 10;
         }
         else
         {
@@ -70,5 +88,37 @@ public class Animal {
             return profit;
         }
         return 0;
+    }
+
+    public int getProfit() {
+        return profit;
+    }
+
+    public int getFedness() {
+        return fedness;
+    }
+
+    public int getWetness() {
+        return wetness;
+    }
+
+    public int getRequiredFood() {
+        return requiredFood;
+    }
+
+    public int getRequiredWater() {
+        return requiredWater;
+    }
+
+    public boolean isSea() {
+        return sea;
+    }
+
+    public int getxCord() {
+        return xCord;
+    }
+
+    public int getyCord() {
+        return yCord;
     }
 }

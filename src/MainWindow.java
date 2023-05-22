@@ -20,8 +20,8 @@ public class MainWindow extends JFrame implements ActionListener {
     private JButton buyWater;
     private JButton buyPool;
 
-    public MainWindow(Data data) {
-        this.data = data;
+    public MainWindow(Data d) {
+        this.data = d;
         this.shop = new Shop(1, data);
         this.hiring = new Hiring(data);
         String imageURL = "images/whale.png";
@@ -29,54 +29,61 @@ public class MainWindow extends JFrame implements ActionListener {
 
         setContentPane(mainPanel);
         setTitle("Window Test");
-        setSize(450,300);
+        setSize(700,450);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
         textArea1.setEditable(false);
-        buyFood.setText("Buy 10 Foods");
-        buyWater.setText("Buy 10 Waters");
+        buyFood.setText("Buy $20 Foods");
+        buyWater.setText("Buy $20 Waters");
         feed.setText("Feed the animals");
         water.setText("Water the animals");
         work.setText("Make them work");
         hire.setText("Hire for " + hiring.getPrice());
         save.setText("Save and exit");
         reset.setText("Reset and exit");
+        buyPool.setText("Unlock the pool and sea animals for $200");
 
 
         buyFood.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                textArea1.setText(data.getStorage() + shop.buyFood());
+                String out = shop.buyFood();
+                textArea1.setText(data.getStorage() + out);
             }
         });
         buyWater.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                textArea1.setText(data.getStorage() + shop.buyWater());
+                String out = shop.buyWater();
+                textArea1.setText(data.getStorage() + out);
             }
         });
         feed.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                textArea1.setText(data.getStorage() );//ADD FEEDING
+                String out = data.feed();
+                textArea1.setText(data.getStorage() + out);//ADD FEEDING
             }
         });
         water.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                textArea1.setText(data.getStorage() );//ADD WATERING
+                String out = data.water();
+                textArea1.setText(data.getStorage() + out);//ADD WATERING
             }
         });
         work.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                textArea1.setText(data.getStorage() );//Work
+                String out = data.work();
+                textArea1.setText(data.getStorage() + out );//Work
             }
         });
         hire.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                textArea1.setText(data.getStorage() + hiring.hire());
+                String out = hiring.hire();
+                textArea1.setText(data.getStorage() + out);
                 hire.setText("Hire for " + hiring.getPrice());
             }
         });
@@ -90,6 +97,13 @@ public class MainWindow extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 textArea1.setText(data.getStorage() );//reset game
+            }
+        });
+        buyPool.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String out = shop.buyPool();
+                textArea1.setText(data.getStorage() + out);
             }
         });
     }

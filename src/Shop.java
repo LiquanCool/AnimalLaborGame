@@ -8,31 +8,31 @@ public class Shop {
     }
     public String buyWater()
     {
-        if(data.getMoney()>10)
+        if(data.getMoney()>=20)
         {
 
-            data.addWater(10);
-            data.pay(10);
-            return "Bought 10 water";
+            data.addWater(20);
+            data.pay(20);
+            return "Bought 20 water";
         }
         return "You cannot buy more water";
     }
     public String buyFood()
     {
-        if(data.getMoney()>10)
+        if(data.getMoney()>=20)
         {
-            data.addFood(10);
-            data.pay(10);
-            return "Bought 10 food";
+            data.addFood(20);
+            data.pay(20);
+            return "Bought 20 food";
         }
         return "You cannot buy more food";
     }
     public String buyPool()
     {
-        if((!data.isPool())&&data.getMoney()>100)
+        if((!data.isPool())&&data.getMoney()>=200)
         {
             data.setPool(true);
-            data.pay(10);
+            data.pay(200);
             return "Bought pool. Now you can hire sea animals";
         }
         return "You cannot buy the pool";

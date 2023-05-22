@@ -1,14 +1,12 @@
 import java.util.ArrayList;
 
 public class Hiring {
-    private ArrayList<LandAnimal> landAnimalList;
-    private ArrayList<SeaAnimal> seaAnimalList;
+    private ArrayList<Animal> AnimalList;
     private Data data;
     private int price;
     public Hiring(Data d)
     {
-        landAnimalList = new ArrayList<LandAnimal>();
-        seaAnimalList = new ArrayList<SeaAnimal>();
+        AnimalList = new ArrayList<Animal>();
         data = d;
         updatePrice();
         initializeAnimals();
@@ -19,18 +17,18 @@ public class Hiring {
     }
     public void initializeAnimals()
     {
-        LandAnimal turtle = new LandAnimal(5, 4, 4, 60, 200);
-        LandAnimal cow = new LandAnimal(20, 15, 10, 60, 200);
-        LandAnimal giraffe = new LandAnimal(100, 50, 50, 60, 200);
-        landAnimalList.add(turtle);
-        landAnimalList.add(cow);
-        landAnimalList.add(giraffe);
-        SeaAnimal fish = new SeaAnimal(25, 15, 200, 200);
-        SeaAnimal penguin = new SeaAnimal(50, 25, 200, 200);
-        SeaAnimal whale = new SeaAnimal(200, 50, 200, 200);
-        seaAnimalList.add(fish);
-        seaAnimalList.add(penguin);
-        seaAnimalList.add(whale);
+        Animal turtle = new Animal(5, 4, 4, 60, 200);
+        Animal cow = new Animal(20, 15, 10, 60, 200);
+        Animal giraffe = new Animal(100, 50, 50, 60, 200);
+        AnimalList.add(turtle);
+        AnimalList.add(cow);
+        AnimalList.add(giraffe);
+        Animal fish = new Animal(25, 15, 200, 200);
+        Animal penguin = new Animal(50, 25, 200, 200);
+        Animal whale = new Animal(200, 50, 200, 200);
+        AnimalList.add(fish);
+        AnimalList.add(penguin);
+        AnimalList.add(whale);
     }
     public String hire()
     {
@@ -43,9 +41,9 @@ public class Hiring {
                     int num = (int)(Math.random()*20+1);
                     if (num<=7)
                     {
-                        if (!(data.getOwnedLandAnimalList().contains(landAnimalList.get(0))))
+                        if (!(data.getOwnedAnimalList().contains(AnimalList.get(0))))
                         {
-                            data.getOwnedLandAnimalList().add(landAnimalList.get(0));
+                            data.getOwnedAnimalList().add(AnimalList.get(0));
                             data.addTimesHired();
                             data.pay(price);
                             updatePrice();
@@ -54,9 +52,9 @@ public class Hiring {
                     }
                     else if(num==8||num==9)
                     {
-                        if (!(data.getOwnedLandAnimalList().contains(landAnimalList.get(1))))
+                        if (!(data.getOwnedAnimalList().contains(AnimalList.get(1))))
                         {
-                            data.getOwnedLandAnimalList().add(landAnimalList.get(1));
+                            data.getOwnedAnimalList().add(AnimalList.get(1));
                             data.addTimesHired();
                             data.pay(price);
                             updatePrice();
@@ -65,9 +63,9 @@ public class Hiring {
                     }
                     else if(num==10)
                     {
-                        if (!(data.getOwnedLandAnimalList().contains(landAnimalList.get(2))))
+                        if (!(data.getOwnedAnimalList().contains(AnimalList.get(2))))
                         {
-                            data.getOwnedLandAnimalList().add(landAnimalList.get(2));
+                            data.getOwnedAnimalList().add(AnimalList.get(2));
                             data.addTimesHired();
                             data.pay(price);
                             updatePrice();
@@ -76,9 +74,9 @@ public class Hiring {
                     }
                     else if(num<18&&data.isPool())
                     {
-                        if (!(data.getOwnedSeaAnimalList().contains(seaAnimalList.get(0))))
+                        if (!(data.getOwnedAnimalList().contains(AnimalList.get(3))))
                         {
-                            data.getOwnedSeaAnimalList().add(seaAnimalList.get(0));
+                            data.getOwnedAnimalList().add(AnimalList.get(3));
                             data.addTimesHired();
                             data.pay(price);
                             updatePrice();
@@ -87,9 +85,9 @@ public class Hiring {
                     }
                     else if(num<20&&data.isPool())
                     {
-                        if (!(data.getOwnedSeaAnimalList().contains(seaAnimalList.get(1))))
+                        if (!(data.getOwnedAnimalList().contains(AnimalList.get(4))))
                         {
-                            data.getOwnedSeaAnimalList().add(seaAnimalList.get(1));
+                            data.getOwnedAnimalList().add(AnimalList.get(4));
                             data.addTimesHired();
                             data.pay(price);
                             updatePrice();
@@ -98,9 +96,9 @@ public class Hiring {
                     }
                     else if(num==20&&data.isPool())
                     {
-                        if (!(data.getOwnedSeaAnimalList().contains(seaAnimalList.get(2))))
+                        if (!(data.getOwnedAnimalList().contains(AnimalList.get(5))))
                         {
-                            data.getOwnedSeaAnimalList().add(seaAnimalList.get(2));
+                            data.getOwnedAnimalList().add(AnimalList.get(5));
                             data.addTimesHired();
                             data.pay(price);
                             updatePrice();

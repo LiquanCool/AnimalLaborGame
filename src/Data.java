@@ -6,8 +6,7 @@ public class Data {
     private int water;
     private boolean pool;
     private int timesHired;
-    private ArrayList<LandAnimal> ownedLandAnimalList;
-    private ArrayList<SeaAnimal> ownedSeaAnimalList;
+    private ArrayList<Animal> ownedAnimalList;
 
     public void setMoney(int money) {
         this.money = money;
@@ -35,13 +34,10 @@ public class Data {
         timesHired++;
     }
 
-    public void setOwnedLandAnimalList(ArrayList<LandAnimal> ownedLandAnimalList) {
-        this.ownedLandAnimalList = ownedLandAnimalList;
+    public void setOwnedAnimalList(ArrayList<Animal> ownedAnimalList) {
+        this.ownedAnimalList = ownedAnimalList;
     }
 
-    public void setOwnedSeaAnimalList(ArrayList<SeaAnimal> ownedSeaAnimalList) {
-        this.ownedSeaAnimalList = ownedSeaAnimalList;
-    }
 
     public int getTimesHired() {
         return timesHired;
@@ -53,8 +49,7 @@ public class Data {
         food = 100;
         water = 100;
         pool = false;
-        ownedLandAnimalList = new ArrayList<LandAnimal>();
-        ownedSeaAnimalList = new ArrayList<SeaAnimal>();
+        ownedAnimalList = new ArrayList<Animal>();
         timesHired = 0;
     }
     public void pay(int price)
@@ -82,11 +77,53 @@ public class Data {
         return pool;
     }
 
-    public ArrayList<LandAnimal> getOwnedLandAnimalList() {
-        return ownedLandAnimalList;
+    public ArrayList<Animal> getOwnedAnimalList() {
+        return ownedAnimalList;
     }
 
-    public ArrayList<SeaAnimal> getOwnedSeaAnimalList() {
-        return ownedSeaAnimalList;
+
+    public String feed()
+    {
+        int count = 0;
+        for(int i = 0;i<ownedAnimalList.size();i++){
+            Animal current = ownedAnimalList.get(i);
+            if(current.getFedness()<100&&food>=10)
+            {
+                food-=current.feed();
+                count++;
+            }
+        }
+        return "You fed " + count + " animals and made lost " + count*10 + " food.";
+    }
+    public String water()
+    {
+        int count = 0;
+        for(int i = 0;i<ownedAnimalList.size();i++){
+            Animal current = ownedAnimalList.get(i);
+            if(current.getWetness()<100&&water>=10)
+            {
+                water-=current.water();
+                count++;
+            }
+        }
+        return "You watered " + count + " animals and lost " + count*10 + " water.";
+    }
+    public String work()
+    {
+        int count = 0;
+        int total = 0;
+        for(int i = 0;i<ownedAnimalList.size();i++){
+            Animal current = ownedAnimalList.get(i);
+            if(current.getRequiredFood()< current.getFedness()&&current.getRequiredWater()<current.getWetness())
+            {
+                current.subtractFedness(current.getRequiredFood());
+                current.subtractWetness(current.getRequiredWater());
+                count++;
+                total+=current.getProfit();
+                System.out.println(current.getFedness());
+            }
+        }
+        money+=total;
+        return "You worked " + count + " animals and made $" + total;
     }
 }
