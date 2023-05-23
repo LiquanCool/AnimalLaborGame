@@ -1,6 +1,8 @@
+import java.io.*;
 import java.util.ArrayList;
-
-public class Data {
+import java.io.Serializable;
+import java.awt.*;
+public class Data implements Serializable {
     private int money;
     private int food;
     private int water;
@@ -125,5 +127,19 @@ public class Data {
         }
         money+=total;
         return "You worked " + count + " animals and made $" + total;
+    }
+    public static void save(Data data) throws IOException, ClassNotFoundException {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Info.dat"));
+        oos.writeObject(data);
+        oos.close();
+        System.out.println("Saved Data.");
+    }
+
+    public static Data useData(Data data) throws IOException, ClassNotFoundException {
+        ObjectInputStream input = new ObjectInputStream(new FileInputStream("Info.dat"));
+        data = (Data) input.readObject();
+        input.close();
+        System.out.println("Data loaded.");
+        return data;
     }
 }

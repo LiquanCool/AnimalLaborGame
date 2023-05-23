@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
-
-public class Animal {
+import java.io.Serializable;
+public class Animal implements Serializable {
     private int profit;
     private int fedness;
     private int wetness;
@@ -9,7 +10,8 @@ public class Animal {
     private boolean sea;
     private int xCord;
     private int yCord;
-    public Animal(int p,int rf, int rw, int x, int y)
+    private String type;
+    public Animal(int p,int rf, int rw, int x, int y, String t)
     {
         profit = p;
         fedness = 100;
@@ -19,8 +21,9 @@ public class Animal {
         xCord = x;
         yCord = y;
         sea = false;
+        type = t;
     }
-    public Animal(int p,int rf, int x, int y)
+    public Animal(int p,int rf, int x, int y, String t)
     {
         profit = p;
         fedness = 100;
@@ -30,6 +33,7 @@ public class Animal {
         xCord = x;
         yCord = y;
         sea = true;
+        type = t;
     }
 
     public int feed()//returns amount to subtract from food
@@ -120,5 +124,9 @@ public class Animal {
 
     public int getyCord() {
         return yCord;
+    }
+    public String toString()
+    {
+        return type;
     }
 }

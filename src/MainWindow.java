@@ -2,8 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-public class MainWindow extends JFrame implements ActionListener {
+import java.io.File;
+import java.io.IOException;
+import java.io.Serializable;
+public class MainWindow extends JFrame implements ActionListener, Serializable {
     private Image image;
     private Shop shop;
     private Hiring hiring;
@@ -25,6 +27,7 @@ public class MainWindow extends JFrame implements ActionListener {
         this.shop = new Shop(1, data);
         this.hiring = new Hiring(data);
         String imageURL = "images/whale.png";
+        File f = new File("Info.dat");
         image = Toolkit.getDefaultToolkit().getImage(imageURL);
 
         setContentPane(mainPanel);
@@ -42,7 +45,7 @@ public class MainWindow extends JFrame implements ActionListener {
         save.setText("Save and exit");
         reset.setText("Reset and exit");
         buyPool.setText("Unlock the pool and sea animals for $200");
-
+        textArea1.setText(data.getStorage());
 
         buyFood.addActionListener(new ActionListener() {
             @Override
@@ -90,13 +93,23 @@ public class MainWindow extends JFrame implements ActionListener {
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                textArea1.setText(data.getStorage() );//save game
+                textArea1.setText(data.getStorage() + "\nData Saved!" );//save game
+                try {
+                    Data.save(data);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                } catch (ClassNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+                System.exit(0);
             }
         });
         reset.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                textArea1.setText(data.getStorage() );//reset game
+                textArea1.setText(data.getStorage() );
+                f.delete();//reset game
+                System.exit(0);
             }
         });
         buyPool.addActionListener(new ActionListener() {

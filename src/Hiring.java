@@ -17,15 +17,15 @@ public class Hiring {
     }
     public void initializeAnimals()
     {
-        Animal turtle = new Animal(5, 4, 4, 60, 200);
-        Animal cow = new Animal(20, 15, 10, 60, 200);
-        Animal giraffe = new Animal(100, 50, 50, 60, 200);
+        Animal turtle = new Animal(5, 4, 4, 60, 200, "turtle");
+        Animal cow = new Animal(20, 15, 10, 60, 200, "cow");
+        Animal giraffe = new Animal(100, 50, 50, 60, 200, "giraffe");
         AnimalList.add(turtle);
         AnimalList.add(cow);
         AnimalList.add(giraffe);
-        Animal fish = new Animal(25, 15, 200, 200);
-        Animal penguin = new Animal(50, 25, 200, 200);
-        Animal whale = new Animal(200, 50, 200, 200);
+        Animal fish = new Animal(25, 15, 200, 200, "fish");
+        Animal penguin = new Animal(50, 25, 200, 200, "penguin");
+        Animal whale = new Animal(200, 50, 200, 200, "whale");
         AnimalList.add(fish);
         AnimalList.add(penguin);
         AnimalList.add(whale);
@@ -43,7 +43,7 @@ public class Hiring {
                     {
                         if (!(data.getOwnedAnimalList().contains(AnimalList.get(0))))
                         {
-                            data.getOwnedAnimalList().add(AnimalList.get(0));
+                            data.getOwnedAnimalList().add(AnimalList.get(0));//FIX THIS PROBLEM BIG PROBLEM
                             data.addTimesHired();
                             data.pay(price);
                             updatePrice();
