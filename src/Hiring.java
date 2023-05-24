@@ -41,12 +41,15 @@ public class Hiring {
                     int num = (int)(Math.random()*20+1);
                     if (num<=7)
                     {
-                        if (!(data.getOwnedAnimalList().contains(AnimalList.get(0))))
+                        if (!(contains(0)))
                         {
+                            System.out.println(AnimalList.get(0));
                             data.getOwnedAnimalList().add(AnimalList.get(0));//FIX THIS PROBLEM BIG PROBLEM
                             data.addTimesHired();
                             data.pay(price);
                             updatePrice();
+                            System.out.println(data.getOwnedAnimalList().get(0));
+                            //System.out.println(data.getOwnedAnimalList().get(1));
                             return "There was turtle in your shoe!";
                         }
                     }
@@ -113,6 +116,18 @@ public class Hiring {
         return "You need "+price+" dollars to hire again!";
     }
 
+    public boolean contains(int ani)
+    {
+        boolean ans =false;
+        for (int i = 0;i<data.getOwnedAnimalList().size();i++)
+        {
+            if (data.getOwnedAnimalList().get(i).toString().equals(AnimalList.get(ani).toString()))
+            {
+                ans = true;
+            }
+        }
+        return ans;
+    }
     public int getPrice() {
         return price;
     }

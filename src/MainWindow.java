@@ -1,7 +1,10 @@
+import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageInputStream;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
@@ -21,19 +24,26 @@ public class MainWindow extends JFrame implements ActionListener, Serializable {
     private JButton buyFood;
     private JButton buyWater;
     private JButton buyPool;
+    private JPanel images;
+    private JLabel background;
 
-    public MainWindow(Data d) {
+    public MainWindow(Data d) throws IOException {
         this.data = d;
         this.shop = new Shop(1, data);
         this.hiring = new Hiring(data);
         String imageURL = "images/whale.png";
         File f = new File("Info.dat");
         image = Toolkit.getDefaultToolkit().getImage(imageURL);
+        background = new JLabel(new ImageIcon("images/grass.jpg"));
+        background.setVisible(true);
+        background.setSize(650,450);
+        add(background);
 
         setContentPane(mainPanel);
         setTitle("Window Test");
         setSize(700,450);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
         setVisible(true);
         textArea1.setEditable(false);
         buyFood.setText("Buy $20 Foods");
@@ -88,6 +98,7 @@ public class MainWindow extends JFrame implements ActionListener, Serializable {
                 String out = hiring.hire();
                 textArea1.setText(data.getStorage() + out);
                 hire.setText("Hire for " + hiring.getPrice());
+                mainPanel.repaint();
             }
         });
         save.addActionListener(new ActionListener() {
@@ -121,11 +132,34 @@ public class MainWindow extends JFrame implements ActionListener, Serializable {
         });
     }
 
+    class ImagePanel extends JComponent {
+        private Image image;
+        public ImagePanel(Image image) {
+            this.image = image;
+        }
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            g.drawImage(image, 0, 0, this);
+        }
+    }
+    public class CustomPaintComponent extends Component {
 
+        public void paint(Graphics g) {
+            Graphics2D g2d = (Graphics2D)g;
+            System.out.println(image);
+            g2d.drawImage(image, 100, 100, null);
+        }
 
+    }
+    public void paintComponent(Graphics g)
+    {
+        Graphics2D graphic = (Graphics2D) g;
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
     }
+
 }
