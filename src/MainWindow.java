@@ -8,6 +8,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Objects;
+
 public class MainWindow extends JFrame implements ActionListener, Serializable {
     private Image image;
     private Shop shop;
@@ -24,8 +26,11 @@ public class MainWindow extends JFrame implements ActionListener, Serializable {
     private JButton buyFood;
     private JButton buyWater;
     private JButton buyPool;
+    private JLabel grass;
+    private JLabel Grass;
     private JPanel images;
     private JLabel background;
+    private ImageIcon grassIcon;
 
     public MainWindow(Data d) throws IOException {
         this.data = d;
@@ -34,10 +39,7 @@ public class MainWindow extends JFrame implements ActionListener, Serializable {
         String imageURL = "images/whale.png";
         File f = new File("Info.dat");
         image = Toolkit.getDefaultToolkit().getImage(imageURL);
-        background = new JLabel(new ImageIcon("images/grass.jpg"));
-        background.setVisible(true);
-        background.setSize(650,450);
-        add(background);
+
 
         setContentPane(mainPanel);
         setTitle("Window Test");
@@ -45,6 +47,18 @@ public class MainWindow extends JFrame implements ActionListener, Serializable {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
+
+
+
+        grassIcon = new ImageIcon(image);
+        background = new JLabel(grassIcon);
+        background.setLocation(100,100);
+        background.setSize(200,100);
+        background.setVisible(true);
+
+
+        grass.setText("");
+
         textArea1.setEditable(false);
         buyFood.setText("Buy $20 Foods");
         buyWater.setText("Buy $20 Waters");
@@ -56,6 +70,7 @@ public class MainWindow extends JFrame implements ActionListener, Serializable {
         reset.setText("Reset and exit");
         buyPool.setText("Unlock the pool and sea animals for $200");
         textArea1.setText(data.getStorage());
+
 
         buyFood.addActionListener(new ActionListener() {
             @Override
@@ -132,29 +147,8 @@ public class MainWindow extends JFrame implements ActionListener, Serializable {
         });
     }
 
-    class ImagePanel extends JComponent {
-        private Image image;
-        public ImagePanel(Image image) {
-            this.image = image;
-        }
-        @Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            g.drawImage(image, 0, 0, this);
-        }
-    }
-    public class CustomPaintComponent extends Component {
-
-        public void paint(Graphics g) {
-            Graphics2D g2d = (Graphics2D)g;
-            System.out.println(image);
-            g2d.drawImage(image, 100, 100, null);
-        }
-
-    }
-    public void paintComponent(Graphics g)
-    {
-        Graphics2D graphic = (Graphics2D) g;
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 
     @Override
