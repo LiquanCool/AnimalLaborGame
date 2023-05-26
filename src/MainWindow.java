@@ -27,39 +27,59 @@ public class MainWindow extends JFrame implements ActionListener, Serializable {
     private JButton buyWater;
     private JButton buyPool;
     private JLabel grass;
-    private JLabel Grass;
-    private JPanel images;
-    private JLabel background;
-    private ImageIcon grassIcon;
+    private JLabel turtleLabel;
+    private ImageIcon turtleIcon;
+    private JLabel cowLabel;
+    private ImageIcon cowIcon;
+    private JLabel giraffeLabel;
+    private ImageIcon giraffeIcon;
 
     public MainWindow(Data d) throws IOException {
         this.data = d;
         this.shop = new Shop(1, data);
         this.hiring = new Hiring(data);
-        String imageURL = "images/whale.png";
         File f = new File("Info.dat");
+
+        String imageURL = "src/turtle.png";
         image = Toolkit.getDefaultToolkit().getImage(imageURL);
+        turtleIcon = new ImageIcon(image);
+        turtleLabel = new JLabel(turtleIcon);
+        turtleLabel.setLocation(0,100);
+        turtleLabel.setSize(200,100);
+        turtleLabel.setVisible(true);
+        grass.add(turtleLabel);
+        imageURL = "src/cow.png";
+        image = Toolkit.getDefaultToolkit().getImage(imageURL);
+        cowIcon = new ImageIcon(image);
+        cowLabel = new JLabel(cowIcon);
+        cowLabel.setLocation(200,100);
+        cowLabel.setSize(200,100);
+        cowLabel.setVisible(true);
+        grass.add(cowLabel);
+        imageURL = "src/giraffe.png";
+        image = Toolkit.getDefaultToolkit().getImage(imageURL);
+        giraffeIcon = new ImageIcon(image);
+        giraffeLabel = new JLabel(giraffeIcon);
+        giraffeLabel.setLocation(300,-20);
+        giraffeLabel.setSize(200,400);
+        giraffeLabel.setVisible(true);
+        grass.add(giraffeLabel);
 
 
         setContentPane(mainPanel);
         setTitle("Window Test");
-        setSize(700,450);
+        setSize(1100,600);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
 
 
 
-        grassIcon = new ImageIcon(image);
-        background = new JLabel(grassIcon);
-        background.setLocation(100,100);
-        background.setSize(200,100);
-        background.setVisible(true);
 
-
-        grass.setText("");
+        //grass.setText("");
 
         textArea1.setEditable(false);
+        textArea1.setFont(new Font("Arial", Font.PLAIN, 20));
         buyFood.setText("Buy $20 Foods");
         buyWater.setText("Buy $20 Waters");
         feed.setText("Feed the animals");
@@ -77,6 +97,7 @@ public class MainWindow extends JFrame implements ActionListener, Serializable {
             public void actionPerformed(ActionEvent e) {
                 String out = shop.buyFood();
                 textArea1.setText(data.getStorage() + out);
+
             }
         });
         buyWater.addActionListener(new ActionListener() {
@@ -147,8 +168,9 @@ public class MainWindow extends JFrame implements ActionListener, Serializable {
         });
     }
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
+    public void update()
+    {
+        turtleLabel.setVisible(false);
     }
 
     @Override
