@@ -33,6 +33,12 @@ public class MainWindow extends JFrame implements ActionListener, Serializable {
     private ImageIcon cowIcon;
     private JLabel giraffeLabel;
     private ImageIcon giraffeIcon;
+    private JLabel fishLabel;
+    private ImageIcon fishIcon;
+    private JLabel penguinLabel;
+    private ImageIcon penguinIcon;
+    private JLabel whaleLabel;
+    private ImageIcon whaleIcon;
 
     public MainWindow(Data d) throws IOException {
         this.data = d;
@@ -64,6 +70,30 @@ public class MainWindow extends JFrame implements ActionListener, Serializable {
         giraffeLabel.setSize(200,400);
         giraffeLabel.setVisible(true);
         grass.add(giraffeLabel);
+        imageURL = "src/fish.png";
+        image = Toolkit.getDefaultToolkit().getImage(imageURL);
+        fishIcon = new ImageIcon(image);
+        fishLabel = new JLabel(fishIcon);
+        fishLabel.setLocation(500,100);
+        fishLabel.setSize(200,100);
+        fishLabel.setVisible(true);
+        grass.add(fishLabel);
+        imageURL = "src/penguin.png";
+        image = Toolkit.getDefaultToolkit().getImage(imageURL);
+        penguinIcon = new ImageIcon(image);
+        penguinLabel = new JLabel(penguinIcon);
+        penguinLabel.setLocation(700,100);
+        penguinLabel.setSize(200,100);
+        penguinLabel.setVisible(true);
+        grass.add(penguinLabel);
+        imageURL = "src/whale.png";
+        image = Toolkit.getDefaultToolkit().getImage(imageURL);
+        whaleIcon = new ImageIcon(image);
+        whaleLabel = new JLabel(whaleIcon);
+        whaleLabel.setLocation(500,200);
+        whaleLabel.setSize(550,200);
+        whaleLabel.setVisible(true);
+        grass.add(whaleLabel);
 
 
         setContentPane(mainPanel);
