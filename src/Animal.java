@@ -8,8 +8,6 @@ public class Animal implements Serializable {
     private int requiredFood;
     private int requiredWater;
     private boolean sea;
-    private int xCord;
-    private int yCord;
     private String type;
     public Animal(int p,int rf, int rw, int x, int y, String t)
     {
@@ -18,8 +16,6 @@ public class Animal implements Serializable {
         wetness = 100;
         requiredFood = rf;
         requiredWater = rw;
-        xCord = x;
-        yCord = y;
         sea = false;
         type = t;
     }
@@ -30,8 +26,6 @@ public class Animal implements Serializable {
         wetness = 100;
         requiredFood = rf;
         requiredWater = 0;
-        xCord = x;
-        yCord = y;
         sea = true;
         type = t;
     }
@@ -42,8 +36,7 @@ public class Animal implements Serializable {
         {
             if(fedness+10>100)
             {
-                fedness=100;
-                return 10;
+                return 0;
             }
             fedness=fedness+10;
             return 10;
@@ -72,8 +65,7 @@ public class Animal implements Serializable {
         {
             if(wetness+10>100)
             {
-                wetness=100;
-                return 10;
+                return 0;
             }
             wetness=wetness+10;
             return 10;
@@ -118,15 +110,12 @@ public class Animal implements Serializable {
         return sea;
     }
 
-    public int getxCord() {
-        return xCord;
-    }
-
-    public int getyCord() {
-        return yCord;
-    }
     public String toString()
     {
+        return type;
+    }
+
+    public String getType() {
         return type;
     }
 }

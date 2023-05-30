@@ -89,7 +89,7 @@ public class Data implements Serializable {
         int count = 0;
         for(int i = 0;i<ownedAnimalList.size();i++){
             Animal current = ownedAnimalList.get(i);
-            if(current.getFedness()<100&&food>=10)
+            if(food>=10&&current.getFedness()+10<=100)
             {
                 food-=current.feed();
                 count++;
@@ -102,7 +102,7 @@ public class Data implements Serializable {
         int count = 0;
         for(int i = 0;i<ownedAnimalList.size();i++){
             Animal current = ownedAnimalList.get(i);
-            if(current.getWetness()<100&&water>=10)
+            if(water>=10&&current.getWetness()+10<=100&&!current.isSea())
             {
                 water-=current.water();
                 count++;
@@ -122,7 +122,6 @@ public class Data implements Serializable {
                 current.subtractWetness(current.getRequiredWater());
                 count++;
                 total+=current.getProfit();
-                System.out.println(current.getFedness());
             }
         }
         money+=total;

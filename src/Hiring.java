@@ -17,9 +17,9 @@ public class Hiring {
     }
     public void initializeAnimals()
     {
-        Animal turtle = new Animal(5, 4, 4, 60, 200, "turtle");
-        Animal cow = new Animal(20, 15, 10, 60, 200, "cow");
-        Animal giraffe = new Animal(100, 50, 50, 60, 200, "giraffe");
+        Animal turtle = new Animal(10, 4, 4, 60, 200, "turtle");
+        Animal cow = new Animal(30, 15, 10, 60, 200, "cow");
+        Animal giraffe = new Animal(110, 50, 50, 60, 200, "giraffe");
         AnimalList.add(turtle);
         AnimalList.add(cow);
         AnimalList.add(giraffe);

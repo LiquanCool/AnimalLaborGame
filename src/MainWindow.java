@@ -39,6 +39,8 @@ public class MainWindow extends JFrame implements ActionListener, Serializable {
     private ImageIcon penguinIcon;
     private JLabel whaleLabel;
     private ImageIcon whaleIcon;
+    private JLabel poolLabel;
+    private ImageIcon poolIcon;
 
     public MainWindow(Data d) throws IOException {
         this.data = d;
@@ -50,17 +52,17 @@ public class MainWindow extends JFrame implements ActionListener, Serializable {
         image = Toolkit.getDefaultToolkit().getImage(imageURL);
         turtleIcon = new ImageIcon(image);
         turtleLabel = new JLabel(turtleIcon);
-        turtleLabel.setLocation(0,100);
+        turtleLabel.setLocation(50,250);
         turtleLabel.setSize(200,100);
-        turtleLabel.setVisible(true);
+        turtleLabel.setVisible(false);
         grass.add(turtleLabel);
         imageURL = "src/cow.png";
         image = Toolkit.getDefaultToolkit().getImage(imageURL);
         cowIcon = new ImageIcon(image);
         cowLabel = new JLabel(cowIcon);
-        cowLabel.setLocation(200,100);
+        cowLabel.setLocation(50,50);
         cowLabel.setSize(200,100);
-        cowLabel.setVisible(true);
+        cowLabel.setVisible(false);
         grass.add(cowLabel);
         imageURL = "src/giraffe.png";
         image = Toolkit.getDefaultToolkit().getImage(imageURL);
@@ -68,32 +70,40 @@ public class MainWindow extends JFrame implements ActionListener, Serializable {
         giraffeLabel = new JLabel(giraffeIcon);
         giraffeLabel.setLocation(300,-20);
         giraffeLabel.setSize(200,400);
-        giraffeLabel.setVisible(true);
+        giraffeLabel.setVisible(false);
         grass.add(giraffeLabel);
         imageURL = "src/fish.png";
         image = Toolkit.getDefaultToolkit().getImage(imageURL);
         fishIcon = new ImageIcon(image);
         fishLabel = new JLabel(fishIcon);
-        fishLabel.setLocation(500,100);
+        fishLabel.setLocation(550,50);
         fishLabel.setSize(200,100);
-        fishLabel.setVisible(true);
+        fishLabel.setVisible(false);
         grass.add(fishLabel);
         imageURL = "src/penguin.png";
         image = Toolkit.getDefaultToolkit().getImage(imageURL);
         penguinIcon = new ImageIcon(image);
         penguinLabel = new JLabel(penguinIcon);
-        penguinLabel.setLocation(700,100);
+        penguinLabel.setLocation(800,50);
         penguinLabel.setSize(200,100);
-        penguinLabel.setVisible(true);
+        penguinLabel.setVisible(false);
         grass.add(penguinLabel);
         imageURL = "src/whale.png";
         image = Toolkit.getDefaultToolkit().getImage(imageURL);
         whaleIcon = new ImageIcon(image);
         whaleLabel = new JLabel(whaleIcon);
-        whaleLabel.setLocation(500,200);
+        whaleLabel.setLocation(500,175);
         whaleLabel.setSize(550,200);
-        whaleLabel.setVisible(true);
+        whaleLabel.setVisible(false);
         grass.add(whaleLabel);
+        imageURL = "src/pool.png";
+        image = Toolkit.getDefaultToolkit().getImage(imageURL);
+        poolIcon = new ImageIcon(image);
+        poolLabel = new JLabel(poolIcon);
+        poolLabel.setLocation(520,5);
+        poolLabel.setSize(550,390);
+        poolLabel.setVisible(false);
+        grass.add(poolLabel);
 
 
         setContentPane(mainPanel);
@@ -120,7 +130,7 @@ public class MainWindow extends JFrame implements ActionListener, Serializable {
         reset.setText("Reset and exit");
         buyPool.setText("Unlock the pool and sea animals for $200");
         textArea1.setText(data.getStorage());
-
+        update();
 
         buyFood.addActionListener(new ActionListener() {
             @Override
@@ -164,7 +174,7 @@ public class MainWindow extends JFrame implements ActionListener, Serializable {
                 String out = hiring.hire();
                 textArea1.setText(data.getStorage() + out);
                 hire.setText("Hire for " + hiring.getPrice());
-                mainPanel.repaint();
+                update();
             }
         });
         save.addActionListener(new ActionListener() {
@@ -194,13 +204,45 @@ public class MainWindow extends JFrame implements ActionListener, Serializable {
             public void actionPerformed(ActionEvent e) {
                 String out = shop.buyPool();
                 textArea1.setText(data.getStorage() + out);
+                update();
             }
         });
     }
 
     public void update()
     {
-        turtleLabel.setVisible(false);
+        if(data.isPool())
+        {
+            poolLabel.setVisible(true);
+        }
+        for (int i = 0 ;i<data.getOwnedAnimalList().size();i++)
+        {
+            Animal current = data.getOwnedAnimalList().get(i);
+            if (current.getType().equals("turtle"))
+            {
+                turtleLabel.setVisible(true);
+            }
+            if (current.getType().equals("cow"))
+            {
+                cowLabel.setVisible(true);
+            }
+            if (current.getType().equals("giraffe"))
+            {
+                giraffeLabel.setVisible(true);
+            }
+            if (current.getType().equals("fish"))
+            {
+                fishLabel.setVisible(true);
+            }
+            if (current.getType().equals("penguin"))
+            {
+                penguinLabel.setVisible(true);
+            }
+            if (current.getType().equals("whale"))
+            {
+                whaleLabel.setVisible(true);
+            }
+        }
     }
 
     @Override
