@@ -43,13 +43,10 @@ public class Hiring {
                     {
                         if (!(contains(0)))
                         {
-                            System.out.println(AnimalList.get(0));
                             data.getOwnedAnimalList().add(AnimalList.get(0));//FIX THIS PROBLEM BIG PROBLEM
                             data.addTimesHired();
                             data.pay(price);
                             updatePrice();
-                            System.out.println(data.getOwnedAnimalList().get(0));
-                            //System.out.println(data.getOwnedAnimalList().get(1));
                             return "There was turtle in your shoe!";
                         }
                     }
