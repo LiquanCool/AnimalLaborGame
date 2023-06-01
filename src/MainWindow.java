@@ -47,7 +47,6 @@ public class MainWindow extends JFrame implements ActionListener, Serializable {
         this.shop = new Shop(1, data);
         this.hiring = new Hiring(data);
         File f = new File("Info.dat");
-
         String imageURL = "src/turtle.png";
         image = Toolkit.getDefaultToolkit().getImage(imageURL);
         turtleIcon = new ImageIcon(image);

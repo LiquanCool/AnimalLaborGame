@@ -32,7 +32,7 @@ public class Hiring {
     }
     public String hire()
     {
-        if(data.getMoney()>price)
+        if(data.getMoney()>=price)
         {
             if (data.getTimesHired()<6&&(data.getTimesHired()<3||data.isPool()))
             {
@@ -43,7 +43,7 @@ public class Hiring {
                     {
                         if (!(contains(0)))
                         {
-                            data.getOwnedAnimalList().add(AnimalList.get(0));//FIX THIS PROBLEM BIG PROBLEM
+                            data.getOwnedAnimalList().add(AnimalList.get(0));
                             data.addTimesHired();
                             data.pay(price);
                             updatePrice();
@@ -52,7 +52,7 @@ public class Hiring {
                     }
                     else if(num==8||num==9)
                     {
-                        if (!(data.getOwnedAnimalList().contains(AnimalList.get(1))))
+                        if (!(contains(1)))
                         {
                             data.getOwnedAnimalList().add(AnimalList.get(1));
                             data.addTimesHired();
@@ -63,7 +63,7 @@ public class Hiring {
                     }
                     else if(num==10)
                     {
-                        if (!(data.getOwnedAnimalList().contains(AnimalList.get(2))))
+                        if (!(contains(2)))
                         {
                             data.getOwnedAnimalList().add(AnimalList.get(2));
                             data.addTimesHired();
@@ -74,7 +74,7 @@ public class Hiring {
                     }
                     else if(num<18&&data.isPool())
                     {
-                        if (!(data.getOwnedAnimalList().contains(AnimalList.get(3))))
+                        if (!(contains(3)))
                         {
                             data.getOwnedAnimalList().add(AnimalList.get(3));
                             data.addTimesHired();
@@ -85,7 +85,7 @@ public class Hiring {
                     }
                     else if(num<20&&data.isPool())
                     {
-                        if (!(data.getOwnedAnimalList().contains(AnimalList.get(4))))
+                        if (!(contains(4)))
                         {
                             data.getOwnedAnimalList().add(AnimalList.get(4));
                             data.addTimesHired();
@@ -96,7 +96,7 @@ public class Hiring {
                     }
                     else if(num==20&&data.isPool())
                     {
-                        if (!(data.getOwnedAnimalList().contains(AnimalList.get(5))))
+                        if (!(contains(5)))
                         {
                             data.getOwnedAnimalList().add(AnimalList.get(5));
                             data.addTimesHired();
