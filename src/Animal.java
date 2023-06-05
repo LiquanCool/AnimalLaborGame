@@ -5,10 +5,10 @@ public class Animal implements Serializable {
     private int profit;
     private int fedness;
     private int wetness;
-    private int requiredFood;
-    private int requiredWater;
-    private boolean sea;
-    private String type;
+    private final int requiredFood;
+    private final int requiredWater;
+    private final boolean sea;
+    private final String type;
     public Animal(int profit,int requiredFood, int requiredWater, String type)
     {
         this.profit = profit;
