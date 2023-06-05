@@ -17,15 +17,15 @@ public class Hiring {
     }
     public void initializeAnimals()
     {
-        Animal turtle = new Animal(10, 4, 4, 60, 200, "turtle");
-        Animal cow = new Animal(30, 15, 10, 60, 200, "cow");
-        Animal giraffe = new Animal(110, 50, 50, 60, 200, "giraffe");
+        Animal turtle = new Animal(10, 4, 4, "turtle");
+        Animal cow = new Animal(30, 15, 10, "cow");
+        Animal giraffe = new Animal(110, 50, 50, "giraffe");
         AnimalList.add(turtle);
         AnimalList.add(cow);
         AnimalList.add(giraffe);
-        Animal fish = new Animal(25, 15, 200, 200, "fish");
-        Animal penguin = new Animal(50, 25, 200, 200, "penguin");
-        Animal whale = new Animal(200, 50, 200, 200, "whale");
+        Animal fish = new Animal(25, 15, "fish");
+        Animal penguin = new Animal(50, 25, "penguin");
+        Animal whale = new Animal(200, 50, "whale");
         AnimalList.add(fish);
         AnimalList.add(penguin);
         AnimalList.add(whale);

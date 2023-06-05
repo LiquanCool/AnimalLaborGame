@@ -9,25 +9,25 @@ public class Animal implements Serializable {
     private int requiredWater;
     private boolean sea;
     private String type;
-    public Animal(int p,int rf, int rw, int x, int y, String t)
+    public Animal(int profit,int requiredFood, int requiredWater, String type)
     {
-        profit = p;
+        this.profit = profit;
         fedness = 100;
         wetness = 100;
-        requiredFood = rf;
-        requiredWater = rw;
+        this.requiredFood = requiredFood;
+        this.requiredWater = requiredWater;
         sea = false;
-        type = t;
+        this.type = type;
     }
-    public Animal(int p,int rf, int x, int y, String t)
+    public Animal(int profit,int requiredFood, String type)
     {
-        profit = p;
+        this.profit = profit;
         fedness = 100;
         wetness = 100;
-        requiredFood = rf;
+        this.requiredFood = requiredFood;
         requiredWater = 0;
         sea = true;
-        type = t;
+        this.type = type;
     }
 
     public int feed()//returns amount to subtract from food
